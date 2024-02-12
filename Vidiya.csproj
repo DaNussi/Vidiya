@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\Vidiya_Icon.png" />
+    <None Remove="Assets\Images\Vidiya_splashscreen.png" />
+    <None Remove="Vidiya_logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WpfScreenHelper" Version="2.1.0" />
+    <PackageReference Include="YoutubeDLSharp" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\Vidiya_Icon.png" />
+    <Resource Include="Assets\Images\Vidiya_logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="Assets\Images\Vidiya_splashscreen.png" />
+  </ItemGroup>
+
+</Project>
