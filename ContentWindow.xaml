@@ -14,6 +14,15 @@
         Icon="Assets/Images/Vidiya_Icon.png">
     <Grid>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="30px" />
+        </Grid.RowDefinitions>
+
         <Image x:Name="logo" 
                Panel.ZIndex="0"
                Height="180" 
@@ -21,8 +30,22 @@
                Width="320" 
                Source="Assets/Images/Vidiya_logo.png" 
                HorizontalAlignment="Center" 
-               VerticalAlignment="Center"/>
-        
-        
+               VerticalAlignment="Center"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"/>
+
+        <ListBox x:Name="ContentListBox"
+            Grid.Column="0"
+            Grid.Row="0"
+            Background="Transparent"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+        </ListBox>
+        <TextBox x:Name="AddContentTextBox"
+                 Grid.Column="0"
+                 Grid.Row="1"
+                 Margin="5,5,5,5"
+                 KeyDown="AddContentTextBox_KeyDown"
+                 TextChanged="AddContentTextBox_TextChanged"/>
     </Grid>
 </Window>

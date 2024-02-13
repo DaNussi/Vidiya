@@ -57,6 +57,8 @@ namespace Vidiya
             MediaPlayerManager.sync(mediaElement.Position);
         }
 
+
+        ContentWindow? contentWindow = null;
         private void ContentButton_Click(object sender, RoutedEventArgs e)
         {
             /*
@@ -74,9 +76,20 @@ namespace Vidiya
                 ContentButton.Content = "Load Content";
             }
             */
+            if (contentWindow == null)
+            {
+                contentWindow = new ContentWindow();
+                contentWindow.Show();
+            } else if (!contentWindow.IsLoaded)
+            {
+                contentWindow.Close();
+                contentWindow = new ContentWindow();
+                contentWindow.Show();
+            }  else
+            {
+                contentWindow.Focus();
+            }
 
-            ContentWindow contentWindow = new ContentWindow();
-            contentWindow.Show();
         }
 
         private void mediaElement_Loaded(object sender, RoutedEventArgs e)

@@ -10,25 +10,15 @@ namespace Vidiya
 {
     public class StateManager
     {
-        private static string appDataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Vidiya");
-        private static string stateDataFile = Path.Combine(appDataFolder, "state.json");
 
         public static GlobalState Load()
         {
-            if(!File.Exists(stateDataFile))
-            {
-                return new GlobalState();
-            }
-
-            string jsonString = File.ReadAllText(stateDataFile);
-            GlobalState state = JsonSerializer.Deserialize<GlobalState>(jsonString);
-            return state;
+            return DataManager.LoadState();
         }
 
         public static void Save(GlobalState state) {
-            string jsonString = JsonSerializer.Serialize(state);
-            Directory.CreateDirectory(appDataFolder);
-            File.WriteAllText(Path.Combine(appDataFolder, "state.json"), jsonString);
+
+            DataManager.SaveState(state);
         }
 
     }

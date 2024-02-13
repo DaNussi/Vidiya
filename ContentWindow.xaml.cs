@@ -12,10 +12,6 @@ namespace Vidiya
     {
         public YoutubeDL youtubeDL = new YoutubeDL();
 
-        private static string appDataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Vidiya");
-        private static string ffmpegDataFile = Path.Combine(appDataFolder, "ffmpeg.exe");
-        private static string ytdlpDataFile = Path.Combine(appDataFolder, "yt-dlp.exe");
-        private static string youtubeDataFile = Path.Combine(appDataFolder, "youtube");
 
         public ContentWindow()
         {
@@ -24,21 +20,28 @@ namespace Vidiya
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            youtubeDL.YoutubeDLPath = ytdlpDataFile;
-            youtubeDL.FFmpegPath = ffmpegDataFile;
-            youtubeDL.OutputFolder = youtubeDataFile;
-
-            if(!File.Exists(ytdlpDataFile)) await YoutubeDLSharp.Utils.DownloadYtDlp(appDataFolder);
-            if (!File.Exists(ffmpegDataFile)) await YoutubeDLSharp.Utils.DownloadFFmpeg(appDataFolder);
+            
+            youtubeDL.YoutubeDLPath = DataManager.ytdlpDataFile;
+            youtubeDL.FFmpegPath = DataManager.ffmpegDataFile;
+            youtubeDL.OutputFolder = DataManager.youtubeDataFolder;
 
 
-            Directory.CreateDirectory(youtubeDataFile);
             var res = await youtubeDL.RunVideoDownload("https://www.youtube.com/watch?v=bq9ghmgqoyc", mergeFormat: YoutubeDLSharp.Options.DownloadMergeFormat.Mp4);
 
             string path = res.Data;
         }
 
+        private void AddContentTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == System.Windows.Input.Key.Enter)
+            {
 
+            }
+        }
 
+        private void AddContentTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
     }
 }

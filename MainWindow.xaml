@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vidiya"
         mc:Ignorable="d"
-        Title="Vidiya" Height="1080"
-        Background="#024D71" Width="1918"
+        Title="Vidiya" Height="1000"
+        Background="#024D71" Width="1878"
         WindowStartupLocation="CenterScreen"
         Closed="MainWindow_Closed"
         Loaded="MainWindow_Loaded"
         Icon="Assets/Images/Vidiya_Icon.png"
-        x:Name="window">
+        x:Name="window"
+        WindowState="Maximized">
     <Grid>
         <Image x:Name="logo" Panel.ZIndex="0" Height="360" Margin="0,0,0,0" Width="640" Source="Assets/Images/Vidiya_logo.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
