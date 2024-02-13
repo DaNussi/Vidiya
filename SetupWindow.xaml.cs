@@ -27,33 +27,12 @@ namespace Vidiya
             InitializeComponent();
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             log(LogMessageType.Info, "Starting software...");
 
             DataManager.Init(log);
-
-
-            if (File.Exists(DataManager.ytdlpDataFile))
-            {
-                log(LogMessageType.Info, "File yt-dlp.exe found!");
-            } else
-            {
-                log(LogMessageType.Info, "File yt-dlp.exe NOT found! Downloading...");
-                await YoutubeDLSharp.Utils.DownloadYtDlp(DataManager.appDataFolder);
-                log(LogMessageType.Info, "Finished downloading yt-dlp.exe!");
-            }
-
-            if (File.Exists(DataManager.ffmpegDataFile))
-            {
-                log(LogMessageType.Info, "File ffmpeg.exe found!");
-            }
-            else
-            {
-                log(LogMessageType.Info, "File ffmpeg.exe NOT found! Downloading...");
-                await YoutubeDLSharp.Utils.DownloadFFmpeg(DataManager.appDataFolder);
-                log(LogMessageType.Info, "Finished downloading ffmpeg.exe!");
-            }
+            ContentManager.Init(log);
 
             MainWindow mainWindow = new MainWindow();
 

@@ -8,7 +8,6 @@
         Title="ContentWindow" 
         Height="450" 
         Width="800"
-        Loaded="Window_Loaded"
         Background="#024D71" 
         WindowStartupLocation="CenterScreen"
         Icon="Assets/Images/Vidiya_Icon.png">
@@ -38,14 +37,14 @@
             Grid.Column="0"
             Grid.Row="0"
             Background="Transparent"
-            ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            SizeChanged="ContentListBox_SizeChanged">
+            
         </ListBox>
         <TextBox x:Name="AddContentTextBox"
                  Grid.Column="0"
                  Grid.Row="1"
                  Margin="5,5,5,5"
-                 KeyDown="AddContentTextBox_KeyDown"
-                 TextChanged="AddContentTextBox_TextChanged"/>
+                 KeyDown="AddContentTextBox_KeyDown"/>
     </Grid>
 </Window>

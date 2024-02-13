@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Vidiya
 {
     class DataManager
     {
         public static string appDataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Vidiya");
-        public static string youtubeDataFolder = Path.Combine(appDataFolder, "youtube");
+        public static string contentDataFolder = Path.Combine(appDataFolder, "content");
 
         public static string stateDataFile = Path.Combine(appDataFolder, "state.json");
         public static string ffmpegDataFile = Path.Combine(appDataFolder, "ffmpeg.exe");
@@ -21,8 +22,8 @@ namespace Vidiya
         {
             logger.Invoke(LogMessageType.Info, "Creating appdata folder");
             Directory.CreateDirectory(appDataFolder);
-            logger.Invoke(LogMessageType.Info, "Creating youtube folder");
-            Directory.CreateDirectory(youtubeDataFolder);
+            logger.Invoke(LogMessageType.Info, "Creating content folder");
+            Directory.CreateDirectory(contentDataFolder);
 
 
             if (!File.Exists(stateDataFile))
@@ -50,5 +51,35 @@ namespace Vidiya
             string jsonString = JsonSerializer.Serialize(state);
             File.WriteAllText(Path.Combine(appDataFolder, "state.json"), jsonString);
         }
+
+
+        internal static ContentState LoadContentState(string folder)
+        {
+            string stateDataFile = Path.Combine(folder, "state.json");
+
+            if (!File.Exists(stateDataFile))
+            {
+                return new ContentState();
+            }
+
+            string jsonString = File.ReadAllText(stateDataFile);
+            ContentState state = JsonSerializer.Deserialize<ContentState>(jsonString);
+            return state;
+        }
+
+        internal static void SaveContentState(ContentState state)
+        {
+            string stateDataFile = Path.Combine(state.path, "state.json");
+            string jsonString = JsonSerializer.Serialize(state);
+            
+            if(Directory.Exists(state.path)) File.WriteAllText(stateDataFile, jsonString);
+        }
+
+        internal static void SaveContentState(ContentListBoxItem item)
+        {
+            SaveContentState(item.state);
+            item.OnStateChange();
+        }
+
     }
 }

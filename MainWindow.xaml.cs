@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -98,7 +99,7 @@ namespace Vidiya
 
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMicroseconds(200);
+            timer.Interval = TimeSpan.FromMilliseconds(200);
             timer.Tick += mediaElement_Timer;
             timer.Start();
 

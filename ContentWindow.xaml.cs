@@ -2,6 +2,8 @@
 using System;
 using System.IO;
 using System.Windows;
+using System.Collections.ObjectModel;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Vidiya
 {
@@ -10,38 +12,42 @@ namespace Vidiya
     /// </summary>
     public partial class ContentWindow : Window
     {
-        public YoutubeDL youtubeDL = new YoutubeDL();
 
 
         public ContentWindow()
         {
             InitializeComponent();
-        }
-
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-            youtubeDL.YoutubeDLPath = DataManager.ytdlpDataFile;
-            youtubeDL.FFmpegPath = DataManager.ffmpegDataFile;
-            youtubeDL.OutputFolder = DataManager.youtubeDataFolder;
-
-
-            var res = await youtubeDL.RunVideoDownload("https://www.youtube.com/watch?v=bq9ghmgqoyc", mergeFormat: YoutubeDLSharp.Options.DownloadMergeFormat.Mp4);
-
-            string path = res.Data;
+            ContentListBox.ItemsSource = ContentManager.contentCollection;
         }
 
         private void AddContentTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if(e.Key == System.Windows.Input.Key.Enter)
+            if(e.Key == System.Windows.Input.Key.Enter && AddContentTextBox.Text != string.Empty)
             {
 
+                ContentState state = new ContentState(ContentStatus.Unknown, ContentType.Unknown, null, null, AddContentTextBox.Text);
+                ContentListBoxItem item = new ContentListBoxItem(state);
+
+                item.Width = ContentListBox.ActualWidth-10;
+                ContentManager.add_content(item);
+                ContentListBox.ItemsSource = ContentManager.contentCollection;
+
+                AddContentTextBox.Text = string.Empty;
+            }
+
+        }
+
+        private void ContentListBox_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            foreach(var item in ContentManager.contentCollection)
+            {
+                item.Width = ContentListBox.ActualWidth-10;
             }
         }
+    }
 
-        private void AddContentTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
+    public class ContentCollection : ObservableCollection<ContentListBoxItem>
+    {
 
-        }
     }
 }

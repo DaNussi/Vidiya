@@ -27,6 +27,7 @@ namespace Vidiya
     {
         public string? contentSource { get; set; }
         public List<DisplayState> displayStates { get; set; }
+        public List<ContentState> contentStates { get; set; }
     }
 
     public class DisplayState

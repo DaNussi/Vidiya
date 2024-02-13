@@ -5,8 +5,131 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Vidiya"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="800">
-    <ListBoxItem>
-        <TextBlock Foreground="Magenta">Random Text</TextBlock>
+             d:DesignHeight="90" 
+             d:DesignWidth="800"
+             Loaded="UserControl_Loaded"
+             Background="#014d71"
+             Height="90">
+    <ListBoxItem x:Name="listBoxItem"
+                 Margin="0"
+                 Padding="0">
+        <Grid x:Name="grid" 
+              ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+              Width="{Binding ActualWidth, ElementName=listBoxItem, Mode=OneWay}"
+              Height="{Binding ActualHeight, ElementName=listBoxItem, Mode=OneWay}" 
+              HorizontalAlignment="Left" VerticalAlignment="Top"
+              Margin="-1"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70px" />
+                <ColumnDefinition Width="2px" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="50px" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30px" />
+                <RowDefinition Height="30px" />
+                <RowDefinition Height="30px" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Foreground="White" 
+                       Grid.Column="0"
+                       Grid.ColumnSpan="1"
+                       Grid.Row="0"
+                       Grid.RowSpan="1"
+                       Margin="5,0,0,0" 
+                       FontSize="20">URL</TextBlock>
+
+            <TextBlock x:Name="UrlTextBox"
+                       Foreground="White" 
+                       Grid.Column="2"
+                       Grid.ColumnSpan="1"
+                       Grid.Row="0"
+                       Grid.RowSpan="1"
+                       Margin="5,0,0,0" 
+                       FontSize="20"></TextBlock>
+
+            <TextBlock Foreground="White" 
+                       Grid.Column="0"
+                       Grid.ColumnSpan="1"
+                       Grid.Row="1"
+                       Grid.RowSpan="1"
+                       Margin="5,0,0,0" 
+                       FontSize="20">Title</TextBlock>
+
+            <TextBlock x:Name="TitleTextBox"
+                       Foreground="White" 
+                       Grid.Column="2"
+                       Grid.ColumnSpan="1"
+                       Grid.Row="1"
+                       Grid.RowSpan="1"
+                       Margin="5,0,0,0" 
+                       FontSize="20"></TextBlock>
+
+            <TextBlock Foreground="White" 
+                       Grid.Column="0"
+                       Grid.ColumnSpan="1"
+                       Grid.Row="2"
+                       Grid.RowSpan="1"
+                       Margin="5,0,0,0" 
+                       FontSize="20">Status</TextBlock>
+
+            <TextBlock x:Name="StatusTextBox"
+                       Foreground="White" 
+                       Grid.Column="2"
+                       Grid.ColumnSpan="1"
+                       Grid.Row="3"
+                       Grid.RowSpan="1"
+                       Margin="5,0,0,0" 
+                       FontSize="20"></TextBlock>
+
+            <Rectangle Grid.Column="1"
+                       Grid.ColumnSpan="1"
+                       Grid.Row="0"
+                       Grid.RowSpan="3"
+                       Margin="0,0,0,0" 
+                       Fill="#8daeb5" />
+
+            <Button x:Name="RemoveButton"
+                    Foreground="White" 
+                    Grid.Column="3"
+                    Grid.ColumnSpan="1"
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Margin="5,2" 
+                    FontSize="16"
+                    Background="#8daeb5"
+                    Click="RemoveButton_Click">
+                <TextBlock>␡</TextBlock>
+            </Button>
+
+            <Button x:Name="RetryButton"
+                    Foreground="White" 
+                    Grid.Column="3"
+                    Grid.ColumnSpan="1"
+                    Grid.Row="1"
+                    Grid.RowSpan="1"
+                    Margin="5,2" 
+                    FontSize="16"
+                    Background="#8daeb5"
+                    Click="RetryButton_Click">
+                <TextBlock>↺</TextBlock>
+            </Button>
+
+            <Button x:Name="PlayButton"
+                    Foreground="White" 
+                    Grid.Column="3"
+                    Grid.ColumnSpan="1"
+                    Grid.Row="2"
+                    Grid.RowSpan="1"
+                    Margin="5,2" 
+                    FontSize="16"
+                    Background="#8daeb5"
+                    Click="PlayButton_Click">
+                <TextBlock>▸</TextBlock>
+            </Button>
+
+        </Grid>
     </ListBoxItem>
 </UserControl>
