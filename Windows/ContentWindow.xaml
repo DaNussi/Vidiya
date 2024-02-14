@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vidiya"
         mc:Ignorable="d"
-        Title="ContentWindow" 
+        Title="Vidiya Content" 
         Height="450" 
         Width="800"
         Background="#024D71" 
@@ -22,16 +22,6 @@
             <RowDefinition Height="30px" />
         </Grid.RowDefinitions>
 
-        <Image x:Name="logo" 
-               Panel.ZIndex="0"
-               Height="180" 
-               Margin="0,0,0,0" 
-               Width="320" 
-               Source="{StaticResource Vidiya_Logo}" 
-               HorizontalAlignment="Center" 
-               VerticalAlignment="Center"
-               Grid.Column="0"
-               Grid.ColumnSpan="2"/>
 
         <ListBox x:Name="ContentListBox"
             Grid.Column="0"
@@ -82,6 +72,8 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="80px" />
+                <ColumnDefinition Width="30px" />
                 <ColumnDefinition Width="30px" />
                 <ColumnDefinition Width="30px" />
             </Grid.ColumnDefinitions>
@@ -89,8 +81,10 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <TextBlock x:Name="SizeQueueTextBlock" Foreground="White">Size: 0</TextBlock>
-            <Button x:Name="RescanQueueButton" Grid.Column="1" Click="RescanQueueButton_Click">↺</Button>
-            <Button x:Name="ExpandQueueButton" Grid.Column="2" Click="ExpandQueueButton_Click">＋</Button>
+            <TextBlock Grid.Column="1" Margin="0,0,5,0" TextAlignment="Right" Foreground="White">AdFrequenzy</TextBlock>
+            <TextBox x:Name="AdFrequenzy" Grid.Column="2" TextAlignment="Center" PreviewTextInput="AdFrequenzy_PreviewTextInput" TextChanged="AdFrequenzy_TextChanged" Loaded="AdFrequenzy_Loaded">10</TextBox>
+            <Button x:Name="RescanQueueButton" Grid.Column="3" Click="RescanQueueButton_Click">↺</Button>
+            <Button x:Name="ExpandQueueButton" Grid.Column="4" Click="ExpandQueueButton_Click">＋</Button>
         </Grid>
 
     </Grid>

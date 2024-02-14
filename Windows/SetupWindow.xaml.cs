@@ -41,8 +41,6 @@ namespace Vidiya
             log(LogMessageType.Info, "Finished setup");
             log(LogMessageType.Info, "Opening main window");
 
-            Thread.Sleep(1000);
-
             this.Hide();
             mainWindow.Show();
         }

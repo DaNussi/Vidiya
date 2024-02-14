@@ -92,9 +92,9 @@ namespace Vidiya
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            var content = ContentManager.get_content(this);
-            if (content.Count <= 0) return;
-            MediaPlayerManager.loadContent(content[0]);
+            //var content = ContentManager.get_content(this);
+            //if (content.Count <= 0) return;
+            //MediaPlayerManager.loadContent(content[0]);
         }
 
         private void ContentUseMusicRadialButton_Checked(object sender, RoutedEventArgs e)

@@ -28,6 +28,19 @@ namespace Vidiya
         public string? contentSource { get; set; }
         public List<DisplayState> displayStates { get; set; }
         public List<ContentState> contentStates { get; set; }
+        public AutoPlayState autoPlayState { get; set; }
+    }
+
+    public class AutoPlayState
+    {
+        public int? adFrequenzy { get; set; }
+
+        public AutoPlayState(int? adFrequenzy)
+        {
+            this.adFrequenzy = adFrequenzy;
+        }
+
+        public AutoPlayState() { }
     }
 
     public class DisplayState

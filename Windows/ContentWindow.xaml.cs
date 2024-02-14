@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Vidiya.Managers;
 using Vidiya.Elements;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Vidiya
 {
@@ -87,7 +88,7 @@ namespace Vidiya
                 item.Width = ContentListBox.ActualWidth - 10;
                 contentQueueItems.Add(item);
             }
-            SizeQueueTextBlock.Text = "Size: "+contentQueueItems.Count;
+            SizeQueueTextBlock.Text = "Size: "+contentQueueItems.Count + " | Ads: " + AutoPlayManager.allAds.Count + " | Music: " + AutoPlayManager.allMusic.Count;
         }
 
         private void ContentQueueListBox_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -106,6 +107,28 @@ namespace Vidiya
         private void ExpandQueueButton_Click(object sender, RoutedEventArgs e)
         {
             AutoPlayManager.ExpandQueue();
+        }
+
+        private void AdFrequenzy_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private bool AdFrequenzy_Initzialiced = false;
+        private void AdFrequenzy_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (!AdFrequenzy_Initzialiced) return;
+            try {
+                AutoPlayManager.AdFrequency = int.Parse(AdFrequenzy.Text);
+                AutoPlayManager.Scan();
+            } catch { }
+        }
+
+        private void AdFrequenzy_Loaded(object sender, RoutedEventArgs e)
+        {
+            AdFrequenzy.Text = AutoPlayManager.AdFrequency.ToString();
+            AdFrequenzy_Initzialiced = true;
         }
     }
 }

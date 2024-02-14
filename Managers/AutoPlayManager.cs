@@ -9,16 +9,16 @@ namespace Vidiya.Managers
 {
     public class AutoPlayManager
     {
-        public static int AdFrequency = 4;
-        public static int AutoQueueLength = 10;
+        public static int AdFrequency = 10;
+        public static int AutoQueueLength = 40;
         private static List<QueueItem> unusedAds = new List<QueueItem>();
         private static List<QueueItem> unusedMusic = new List<QueueItem>();
 
         public static Queue<QueueItem> queue = new Queue<QueueItem>();
         private static int queueCounter = 0;
 
-        private static List<QueueItem> allMusic = new List<QueueItem>();
-        private static List<QueueItem> allAds = new List<QueueItem>();
+        public static List<QueueItem> allMusic = new List<QueueItem>();
+        public static List<QueueItem> allAds = new List<QueueItem>();
 
         public static List<Action> queueListeners = new List<Action>();
 
@@ -28,7 +28,7 @@ namespace Vidiya.Managers
             Scan();
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(200);
+            timer.Interval = TimeSpan.FromMilliseconds(50);
             timer.Tick += queue_Timer;
             timer.Start();
         }

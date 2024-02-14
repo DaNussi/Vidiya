@@ -64,21 +64,6 @@ namespace Vidiya
         ContentWindow? contentWindow = null;
         private void ContentButton_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            if(mediaElement.Source == null)
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "Media files (*.mp3;*.mpg;*.mpeg;*.mp4)|*.mp4;*.mp3;*.mpg;*.mpeg|All files (*.*)|*.*";
-                if (openFileDialog.ShowDialog() == true) MediaPlayerManager.loadContent(new Uri(openFileDialog.FileName));
-
-                state.contentSource = openFileDialog.FileName;
-                ContentButton.Content = "Unload Content";
-            } else {
-                MediaPlayerManager.loadContent(null);
-                state.contentSource = null;
-                ContentButton.Content = "Load Content";
-            }
-            */
             if (contentWindow == null)
             {
                 contentWindow = new ContentWindow();
@@ -139,6 +124,8 @@ namespace Vidiya
                 state.displayStates.Add(videoWindow.UpdateDisplayState());
             }
 
+            state.autoPlayState = new AutoPlayState(AutoPlayManager.AdFrequency);
+
             StateManager.Save(state);
             Environment.Exit(0);
         }
@@ -170,6 +157,13 @@ namespace Vidiya
             }
 
             if(state.contentSource != null) MediaPlayerManager.loadContent(new Uri(state.contentSource));
+
+            if(state.autoPlayState != null)
+            {
+                if(state.autoPlayState.adFrequenzy != null) {
+                    AutoPlayManager.AdFrequency = (int) state.autoPlayState.adFrequenzy; 
+                }
+            }
         }
 
         private void SkipButton_Click(object sender, RoutedEventArgs e)
