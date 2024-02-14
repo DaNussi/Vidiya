@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:Vidiya"
              mc:Ignorable="d" 
              d:DesignHeight="90" 
-             d:DesignWidth="800"
+             d:DesignWidth="400"
              Loaded="UserControl_Loaded"
-             Background="#014d71"
+             Background="Transparent"
              Height="90">
     <ListBoxItem x:Name="listBoxItem"
                  Margin="0"
@@ -25,6 +25,9 @@
                 <ColumnDefinition Width="70px" />
                 <ColumnDefinition Width="2px" />
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2px" />
+                <ColumnDefinition Width="70px" />
+                <ColumnDefinition Width="100px" />
                 <ColumnDefinition Width="50px" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -93,7 +96,7 @@
 
             <Button x:Name="RemoveButton"
                     Foreground="White" 
-                    Grid.Column="3"
+                    Grid.Column="6"
                     Grid.ColumnSpan="1"
                     Grid.Row="0"
                     Grid.RowSpan="1"
@@ -106,7 +109,7 @@
 
             <Button x:Name="RetryButton"
                     Foreground="White" 
-                    Grid.Column="3"
+                    Grid.Column="6"
                     Grid.ColumnSpan="1"
                     Grid.Row="1"
                     Grid.RowSpan="1"
@@ -119,7 +122,7 @@
 
             <Button x:Name="PlayButton"
                     Foreground="White" 
-                    Grid.Column="3"
+                    Grid.Column="6"
                     Grid.ColumnSpan="1"
                     Grid.Row="2"
                     Grid.RowSpan="1"
@@ -129,6 +132,40 @@
                     Click="PlayButton_Click">
                 <TextBlock>▸</TextBlock>
             </Button>
+
+
+            <Rectangle Grid.Column="3"
+                       Grid.ColumnSpan="1"
+                       Grid.Row="0"
+                       Grid.RowSpan="3"
+                       Margin="0,0,0,0" 
+                       Fill="#8daeb5" />
+
+            <TextBlock Foreground="White" 
+                       Grid.Column="4"
+                       Grid.ColumnSpan="1"
+                       Grid.Row="0"
+                       Grid.RowSpan="1"
+                       Margin="5,0,0,0" 
+                       FontSize="20">Use</TextBlock>
+            
+
+            <Grid Grid.Column="5"
+                  Grid.ColumnSpan="1"
+                  Grid.Row="0"
+                  Grid.RowSpan="1"
+                  Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <RadioButton Width="100" Grid.Column="0" Grid.Row="0" Foreground="White" Content="Music" x:Name="ContentUseMusicRadialButton" Checked="ContentUseMusicRadialButton_Checked"  IsChecked="True"/>
+                <RadioButton Width="100" Grid.Column="0" Grid.Row="1" Foreground="White" Content="Advertisement" x:Name="ContentUseAdRadialButton" Checked="ContentUseAdRadialButton_Checked" />
+            </Grid>
 
         </Grid>
     </ListBoxItem>

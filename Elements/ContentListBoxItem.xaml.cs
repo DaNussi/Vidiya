@@ -27,11 +27,18 @@ namespace Vidiya
     {
         public ContentState state;
         public CancellationTokenSource? downloadCancelationToken;
+        public bool useStateInizilaiced = false;
 
         public ContentListBoxItem(ContentState state)
         {
             this.state = state;
+
             InitializeComponent();
+
+            string group = Guid.NewGuid().ToString();
+            this.ContentUseMusicRadialButton.GroupName = group;
+            this.ContentUseAdRadialButton.GroupName = group;
+            useStateInizilaiced = true;
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -64,21 +71,51 @@ namespace Vidiya
         {
             this.TitleTextBox.Text = state.title;
             this.UrlTextBox.Text = state.url;
+
+            switch(this.state.use)
+            {
+                case ContentUse.music:
+                    this.ContentUseMusicRadialButton.IsChecked = true;
+                    break;
+                case ContentUse.ad:
+                    this.ContentUseAdRadialButton.IsChecked = true;
+                    break;
+            }
         }
 
         private void RetryButton_Click(object sender, RoutedEventArgs e)
         {
             ContentManager.remove_content(this);
-            this.state = new ContentState(ContentStatus.Unknown, ContentType.Unknown, null, null, this.state.url);
+            this.state = new ContentState(ContentStatus.Unknown, ContentType.Unknown, ContentUse.music, null, null, this.state.url);
             ContentManager.add_content(this);
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            var contentPaths = Directory.GetFiles(this.state.path, "*.mp4");
-            if(contentPaths.Length <= 0) return;
-            MediaPlayerManager.loadContent(new Uri(contentPaths[0]));
+            var content = ContentManager.get_content(this);
+            if (content.Count <= 0) return;
+            MediaPlayerManager.loadContent(content[0]);
         }
+
+        private void ContentUseMusicRadialButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (!useStateInizilaiced || this.state.path == null) return;
+            this.state.use = ContentUse.music;
+            DataManager.SaveContentState(this);
+        }
+
+        private void ContentUseAdRadialButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (!useStateInizilaiced || this.state.path == null) return;
+            this.state.use = ContentUse.ad;
+            DataManager.SaveContentState(this);
+        }
+    }
+
+    public enum ContentUse
+    {
+        music,
+        ad
     }
 
     public enum ContentStatus
@@ -99,6 +136,8 @@ namespace Vidiya
         SpotifyVideo,
         SpotifyPlaylist,
         SpotifyUnkown,
-        Unknown
+        Unknown,
+        Failed,
+        Folder
     }
 }

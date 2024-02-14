@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Vidiya.Managers;
 using WpfScreenHelper;
 
 namespace Vidiya
@@ -40,6 +41,7 @@ namespace Vidiya
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
+            if(mediaElement.Source == null) AutoPlayManager.skip();
             MediaPlayerManager.play();
         }
 
@@ -168,6 +170,21 @@ namespace Vidiya
             }
 
             if(state.contentSource != null) MediaPlayerManager.loadContent(new Uri(state.contentSource));
+        }
+
+        private void SkipButton_Click(object sender, RoutedEventArgs e)
+        {
+            AutoPlayManager.skip();
+        }
+
+        private void mediaElement_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            AutoPlayManager.skip();
+        }
+
+        private void volumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if(mediaElement != null) mediaElement.Volume = volumeSlider.Value;
         }
     }
 }

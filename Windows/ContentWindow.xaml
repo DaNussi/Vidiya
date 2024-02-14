@@ -1,0 +1,97 @@
+﻿<Window x:Class="Vidiya.ContentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vidiya"
+        mc:Ignorable="d"
+        Title="ContentWindow" 
+        Height="450" 
+        Width="800"
+        Background="#024D71" 
+        WindowStartupLocation="CenterScreen"
+        Icon="{StaticResource Vidiya_Icon}">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="30px" />
+        </Grid.RowDefinitions>
+
+        <Image x:Name="logo" 
+               Panel.ZIndex="0"
+               Height="180" 
+               Margin="0,0,0,0" 
+               Width="320" 
+               Source="{StaticResource Vidiya_Logo}" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"/>
+
+        <ListBox x:Name="ContentListBox"
+            Grid.Column="0"
+            Grid.Row="0"
+            Background="Transparent"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            SizeChanged="ContentListBox_SizeChanged">
+
+        </ListBox>
+
+        <Grid Grid.Column="0"
+              Grid.Row="1"
+              Margin="5,5,5,5">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2px" />
+                <ColumnDefinition Width="30px" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBox x:Name="AddContentTextBox"
+                     Grid.Column="0"
+                     KeyDown="AddContentTextBox_KeyDown"/>
+            <Button x:Name="AddFolderContentButton"
+                    Grid.Column="2"
+                    Click="AddFolderContentButton_Click"
+                    >📁</Button>
+        </Grid>
+
+
+
+
+        <ListBox x:Name="ContentQueueListBox"
+            Grid.Column="1"
+            Grid.Row="0"
+            Background="Transparent"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            SizeChanged="ContentQueueListBox_SizeChanged"
+            Loaded="ContentQueueListBox_Loaded">
+        </ListBox>
+
+
+        <Grid Grid.Column="1"
+              Grid.Row="1"
+              Margin="5,5,5,5">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="30px" />
+                <ColumnDefinition Width="30px" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="SizeQueueTextBlock" Foreground="White">Size: 0</TextBlock>
+            <Button x:Name="RescanQueueButton" Grid.Column="1" Click="RescanQueueButton_Click">↺</Button>
+            <Button x:Name="ExpandQueueButton" Grid.Column="2" Click="ExpandQueueButton_Click">＋</Button>
+        </Grid>
+
+    </Grid>
+</Window>

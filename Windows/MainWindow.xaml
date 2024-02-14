@@ -10,11 +10,11 @@
         WindowStartupLocation="CenterScreen"
         Closed="MainWindow_Closed"
         Loaded="MainWindow_Loaded"
-        Icon="Assets/Images/Vidiya_Icon.png"
+        Icon="{StaticResource Vidiya_Icon}"
         x:Name="window"
         WindowState="Maximized">
     <Grid>
-        <Image x:Name="logo" Panel.ZIndex="0" Height="360" Margin="0,0,0,0" Width="640" Source="Assets/Images/Vidiya_logo.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Image x:Name="logo" Panel.ZIndex="0" Height="360" Margin="0,0,0,0" Width="640" Source="{StaticResource Vidiya_Logo}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 
         <StackPanel Grid.Row="1" Panel.ZIndex="2" Grid.Column="1">
@@ -24,10 +24,16 @@
         <StackPanel Grid.Row="1" Panel.ZIndex="2" Grid.Column="2">
             <Label Name="statusLabel" Content="Not playing..." HorizontalContentAlignment="Center" Margin="5"  FontSize="28"/>
             <WrapPanel HorizontalAlignment="Center">
-                <Button x:Name="playButton" Click="PlayButton_Click" FontSize="28">Play</Button>
+                <Button x:Name="playButton" Margin="5,0" Click="PlayButton_Click" FontSize="28">Play</Button>
                 <Button x:Name="pauseButton" Margin="5,0" Click="PauseButton_Click" FontSize="28">Pause</Button>
                 <Button x:Name="stopButton"  Margin="5,0" Click="StopButton_Click" FontSize="28">Stop</Button>
-                <Button x:Name="syncButton" Click="SyncButton_Click" FontSize="28">Sync</Button>
+                <Button x:Name="syncButton" Margin="5,0" Click="SyncButton_Click" FontSize="28">Sync</Button>
+                <Button x:Name="skipButton" Margin="5,0" Click="SkipButton_Click" FontSize="28">Skip</Button>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Center">
+                <TextBlock TextAlignment="Center" FontSize="20" Height="28" Margin="5" Background="#dddddd">🔉</TextBlock>
+                <Slider x:Name="volumeSlider" Margin="0,20" Width="250" ValueChanged="volumeSlider_ValueChanged" Maximum="1" SmallChange="0.01" Value="0.2"/>
+                <TextBlock TextAlignment="Center" FontSize="20" Height="28" Margin="5" Background="#dddddd">🔊</TextBlock>
             </WrapPanel>
         </StackPanel>
 
@@ -36,7 +42,7 @@
         </StackPanel>
 
         <Viewbox Stretch="Uniform" Panel.ZIndex="1">
-            <MediaElement x:Name="mediaElement" Stretch="Fill" LoadedBehavior="Manual" UnloadedBehavior="Close" Loaded="mediaElement_Loaded" Unloaded="mediaElement_Unloaded"/>
+            <MediaElement x:Name="mediaElement" Stretch="Fill" LoadedBehavior="Manual" UnloadedBehavior="Close" Loaded="mediaElement_Loaded" Unloaded="mediaElement_Unloaded" MediaEnded="mediaElement_MediaEnded"/>
         </Viewbox>
     </Grid>
 </Window>

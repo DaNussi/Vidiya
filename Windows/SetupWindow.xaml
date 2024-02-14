@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None">
     <Grid>
-        <Image x:Name="logo" Panel.ZIndex="0" Height="360" Margin="0,0,0,0" Width="640" Source="Assets/Images/Vidiya_logo.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Image x:Name="logo" Panel.ZIndex="0" Height="360" Margin="0,0,0,0" Width="640" Source="{StaticResource Vidiya_Logo}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         <TextBlock x:Name="logTextBlock" Margin="20,0,0,20" FontSize="18" Foreground="White"/>
 

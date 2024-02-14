@@ -8,23 +8,40 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\Vidiya_banner.png" />
     <None Remove="Assets\Images\Vidiya_Icon.png" />
     <None Remove="Assets\Images\Vidiya_splashscreen.png" />
     <None Remove="Vidiya_logo.png" />
+    <None Remove="Windows\Vidiya_Icon.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
     <PackageReference Include="WpfScreenHelper" Version="2.1.0" />
     <PackageReference Include="YoutubeDLSharp" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Images\Vidiya_Icon.png" />
-    <Resource Include="Assets\Images\Vidiya_logo.png" />
+    <Resource Include="Assets\Images\Vidiya_Banner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Vidiya_Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Vidiya_Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Windows\Vidiya_Icon.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <SplashScreen Include="Assets\Images\Vidiya_splashscreen.png" />
+    <SplashScreen Include="Assets\Images\Vidiya_Splashscreen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </SplashScreen>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Util\" />
   </ItemGroup>
 
 </Project>

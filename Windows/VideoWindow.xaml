@@ -13,14 +13,14 @@
         KeyDown="Window_KeyDown"
         LocationChanged="Window_LocationChanged"
         StateChanged="Window_LocationChanged"
-        Icon="Assets/Images/Vidiya_Icon.png">
+        Icon="{StaticResource Vidiya_Icon}">
     <Grid>
         <Image x:Name="logo" 
                Panel.ZIndex="0"
                Height="180" 
                Margin="0,0,0,0" 
                Width="320" 
-               Source="Assets/Images/Vidiya_logo.png" 
+               Source="{StaticResource Vidiya_Logo}" 
                HorizontalAlignment="Center" 
                VerticalAlignment="Center"/>
         

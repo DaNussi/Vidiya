@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vidiya.Managers;
 using YoutubeDLSharp;
 
 namespace Vidiya
@@ -33,6 +34,7 @@ namespace Vidiya
 
             DataManager.Init(log);
             ContentManager.Init(log);
+            AutoPlayManager.Init(log);
 
             MainWindow mainWindow = new MainWindow();
 

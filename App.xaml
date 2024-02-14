@@ -2,9 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Vidiya"
-             StartupUri="SetupWindow.xaml"
+             StartupUri="Windows/SetupWindow.xaml"
              >
     <Application.Resources>
-         
+        <BitmapImage x:Key="Vidiya_Icon" UriSource="Assets/Images/Vidiya_Icon.png" />
+        <BitmapImage x:Key="Vidiya_Logo" UriSource="Assets/Images/Vidiya_Logo.png" />
+        <BitmapImage x:Key="Vidiya_Banner" UriSource="Assets/Images/Vidiya_Banner.png" />
+        <BitmapImage x:Key="Vidiya_Splashscreen" UriSource="Assets/Images/Vidiya_Splashscreen.png" />
     </Application.Resources>
 </Application>

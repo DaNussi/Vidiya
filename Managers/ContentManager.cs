@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
@@ -15,7 +16,7 @@ namespace Vidiya
     class ContentManager
     {
         private static YoutubeDL youtubeDL = new YoutubeDL();
-        public static ContentCollection contentCollection = new ContentCollection();
+        public static ObservableCollection<ContentListBoxItem> contentCollection = new ObservableCollection<ContentListBoxItem>();
 
         public static bool isInitialized = false;
         public static async void Init(Action<LogMessageType, string> log)
@@ -109,6 +110,9 @@ namespace Vidiya
                 case ContentType.YouTubePlaylist:
                     youtube_playlist_download(item);
                     break;
+                case ContentType.Folder:
+                    folder_download(item);
+                    break;
             }
 
         }
@@ -128,7 +132,7 @@ namespace Vidiya
 
             item.SetStatus(ContentStatus.DownloadingContent);
             DataManager.SaveContentState(item);
-            var progress = new Progress<DownloadProgress>(p => { if (item.state.status == ContentStatus.DownloadingContent) item.SetStatus(ContentStatus.DownloadingContent, "Progress: " + p.Progress); });
+            var progress = new Progress<DownloadProgress>(p => { if (item.state.status == ContentStatus.DownloadingContent) item.SetStatus(ContentStatus.DownloadingContent, "Progress: " + p.Progress + " | State: " + p.State); });
             var cts = new CancellationTokenSource();
             item.downloadCancelationToken = cts;
             youtubeDL.OutputFolder = item.state.path;
@@ -153,7 +157,7 @@ namespace Vidiya
         {
             item.SetStatus(ContentStatus.DownloadingContent);
             DataManager.SaveContentState(item);
-            var progress = new Progress<DownloadProgress>(p => {if(item.state.status == ContentStatus.DownloadingContent) item.SetStatus(ContentStatus.DownloadingContent, "Progress: " + p.Progress + " | Video: " + p.VideoIndex); });
+            var progress = new Progress<DownloadProgress>(p => {if(item.state.status == ContentStatus.DownloadingContent) item.SetStatus(ContentStatus.DownloadingContent, "Progress: " + p.Progress + " | State: " + p.State); });
             var cts = new CancellationTokenSource();
             item.downloadCancelationToken = cts;
             youtubeDL.OutputFolder = item.state.path;
@@ -173,6 +177,35 @@ namespace Vidiya
             item.downloadCancelationToken = null;
             item.SetStatus(ContentStatus.Ready);
             DataManager.SaveContentState(item);
+        }
+
+        public static async void folder_download(ContentListBoxItem item)
+        {
+            item.SetStatus(ContentStatus.DownloadingMeta);
+            DataManager.SaveContentState(item);
+
+            var files = Directory.GetFiles(item.state.url.Replace("file://",""), "*.mp4");
+            item.state.title = "Videos: " + files.Length;
+
+            item.SetStatus(ContentStatus.Ready);
+            DataManager.SaveContentState(item);
+        }
+
+        public static List<Uri> get_content(ContentListBoxItem item)
+        {
+            string path = item.state.path;
+            if (item.state.type == ContentType.Folder) path = item.state.url.Replace("file://", "");
+
+            var contentPaths = Directory.GetFiles(path, "*.mp4");
+            if (contentPaths.Length <= 0) return new List<Uri>();
+
+            List<Uri> uris = new List<Uri>();
+            foreach(var contentPath in contentPaths)
+            {
+                uris.Add(new Uri(contentPath));
+            }
+
+            return uris;
         }
 
         public static void add_content(ContentListBoxItem item)
@@ -215,6 +248,14 @@ namespace Vidiya
                         item.SetType(ContentType.SpotifyUnkown);
                         item.SetStatus(ContentStatus.Failed);
                     }
+                } else if (state.url.Contains("file://"))
+                {
+                    item.SetType(ContentType.Folder);
+                    item.SetStatus(ContentStatus.Pending);
+                } else
+                {
+                    item.SetType(ContentType.Failed);
+                    item.SetStatus(ContentStatus.Failed);
                 }
             }
 
@@ -231,7 +272,7 @@ namespace Vidiya
             if(item.downloadCancelationToken != null) { item.downloadCancelationToken.Cancel(); }
             if(contentCollection.Contains(item)) contentCollection.Remove(item);
             
-            if(Directory.Exists(item.state.path)) Directory.Delete(item.state.path, true);
+            if(Directory.Exists(item.state.path) && item.state.type != ContentType.Folder) Directory.Delete(item.state.path, true);
         }
 
     }
@@ -241,14 +282,16 @@ namespace Vidiya
     {
         public ContentStatus status { get; set; }
         public ContentType type { get; set; }
+        public ContentUse use { get; set; }
         public string path { get; set; }
         public string title { get; set; }
         public string url { get; set; }
 
-        public ContentState(ContentStatus status, ContentType type, string path, string title, string url)
+        public ContentState(ContentStatus status, ContentType type, ContentUse use, string path, string title, string url)
         {
             this.status = status;
             this.type = type;
+            this.use = use;
             this.path = path;
             this.title = title;
             this.url = url;
