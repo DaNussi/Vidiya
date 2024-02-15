@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Vidiya.Elements.MediaControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Vidiya.Elements"
+             mc:Ignorable="d" 
+             d:DesignHeight="48.6" d:DesignWidth="450">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="48.6px"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="48.6px"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" BorderThickness="3,3,3,3" BorderBrush="#8CADB4" CornerRadius="59" Background="#002A3D"/>
+        <Border Grid.Column="2" BorderThickness="3" BorderBrush="#8CADB4" CornerRadius="59" Background="#002A3D"/>
+        <Border Grid.Column="1" BorderThickness="0,3,0,3" BorderBrush="#8CADB4" Margin="-24.3,0" Background="#002A3D"/>
+    </Grid>
+</UserControl>
