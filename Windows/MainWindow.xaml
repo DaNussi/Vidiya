@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vidiya.Windows"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Vidiya"
         Height="1080" Width="1920"
-        ResizeMode="CanMinimize">
+        Loaded="Window_Loaded"
+        Unloaded="Window_Unloaded">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="480px"/>
-            <ColumnDefinition Width="3px"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3px"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
         

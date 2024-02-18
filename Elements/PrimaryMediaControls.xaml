@@ -3,17 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Vidiya.Elements"
+             xmlns:local="clr-namespace:Vidiya.Elements" xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="48.6" d:DesignWidth="450">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="48.6px"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="48.6px"/>
-        </Grid.ColumnDefinitions>
-        <Border Grid.Column="0" BorderThickness="3,3,3,3" BorderBrush="#8CADB4" CornerRadius="59" Background="#002A3D"/>
-        <Border Grid.Column="2" BorderThickness="3" BorderBrush="#8CADB4" CornerRadius="59" Background="#002A3D"/>
-        <Border Grid.Column="1" BorderThickness="0,3,0,3" BorderBrush="#8CADB4" Margin="-24.3,0" Background="#002A3D"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="48.6px"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="48.6px"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderThickness="3,3,3,3" BorderBrush="#8CADB4" CornerRadius="59" Background="#002A3D"/>
+            <Border Grid.Column="2" BorderThickness="3" BorderBrush="#8CADB4" CornerRadius="59" Background="#002A3D"/>
+            <Border Grid.Column="1" BorderThickness="0,3,0,3" BorderBrush="#8CADB4" Margin="-24.3,0" Background="#002A3D"/>
+        </Grid>
+
+        <Grid Margin="0,4.3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="48.6px"/>
+                <ColumnDefinition Width="48.6px"/>
+                <ColumnDefinition Width="48.6px"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" x:Name="PreviousButton" Style="{StaticResource VidiyaButton}" Click="NextButton_Click">
+                <Grid>
+                    <Ellipse Fill="#002A3D"/>
+                    <materialIcons:MaterialIcon Kind="FastRewind" Foreground="#8CADB4" Margin="3"/>
+                </Grid>
+            </Button>
+
+            <Button Grid.Column="2" x:Name="PlayPauseButton" Style="{StaticResource VidiyaButton}" Click="PlayPauseButton_Click">
+                <Grid>
+                    <Ellipse Fill="#002A3D"/>
+                    <materialIcons:MaterialIcon x:Name="PlayPauseIcon" Kind="Play" Foreground="#8CADB4" Margin="3"/>
+                </Grid>
+            </Button>
+
+            <Button Grid.Column="3" x:Name="NextButton" Style="{StaticResource VidiyaButton}" Click="NextButton_Click">
+                <Grid>
+                    <Ellipse Fill="#002A3D"/>
+                    <materialIcons:MaterialIcon Kind="FastForward" Foreground="#8CADB4" Margin="3"/>
+                </Grid>
+            </Button>
+        </Grid>
     </Grid>
 </UserControl>

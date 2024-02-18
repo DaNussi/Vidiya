@@ -24,5 +24,15 @@ namespace Vidiya.Elements
         {
             InitializeComponent();
         }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PlayPauseButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

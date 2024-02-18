@@ -16,6 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40px"/>
             <RowDefinition Height="165px"/>
+            <RowDefinition Height="40px"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="40px"/>
             <RowDefinition Height="48.6px"/>
@@ -24,7 +25,7 @@
 
         <Image Grid.Column="1" Grid.Row="1" Source="{Binding Mode=OneWay, Source={StaticResource SidePanel_Logo}}"/>
 
-        <Grid Grid.Column="1" Grid.Row="2" >
+        <Grid Grid.Column="1" Grid.Row="3" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="48.6px"/>
                 <ColumnDefinition Width="1*"/>
@@ -45,7 +46,7 @@
             <Border Grid.Column="1" Grid.Row="0" Margin="-24.3,0" BorderThickness="0,3" BorderBrush="#8CADB4" Background="#002A3D"/>
         </Grid>
 
-        <local:MediaControls Grid.Column="1" Grid.Row="4" />
+        <local:MediaControls Grid.Column="1" Grid.Row="5" />
 
     </Grid>
 </UserControl>
