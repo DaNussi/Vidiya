@@ -12,6 +12,10 @@
         <BitmapImage x:Key="Vidiya_Splashscreen" UriSource="Assets/Images/Vidiya_Splashscreen.png" />
         <BitmapImage x:Key="SidePanel_Logo" UriSource="Assets/Images/SidePanel_Logo.jpg" />
 
+        <Color x:Key="TextBoxBackgroundColor">#C4AF8D</Color>
+        <Color x:Key="TextBoxForegroundColor">#6B4E2C</Color>
+        <Color x:Key="ToolBarButtonForegroundColor">#6B4E2C</Color>
+
         <Style x:Key="VidiyaButton" TargetType="Button">
 
             <Setter Property="Background" Value="#00000000"/>

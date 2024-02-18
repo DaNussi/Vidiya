@@ -15,14 +15,16 @@ namespace Vidiya.Managers
         public LogManager LogManager { get; }
         public DataManager DataManager { get; }
         public MediaManager MediaManager { get; }
+        public MenuManager MenuManager { get; }
 
         public VidiyaManager() : base(new LogManager())
         {
             this.LogManager = this.logger;
             this.DataManager = new DataManager(LogManager);
             this.MediaManager = new MediaManager(LogManager);
+            this.MenuManager = new MenuManager(LogManager);
 
-            this.mangers = new Manager[] { LogManager, DataManager };
+            this.mangers = new Manager[] { LogManager, DataManager , MenuManager };
         }
 
         public override void Init()

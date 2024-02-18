@@ -3,16 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Vidiya.Elements" xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:local="clr-namespace:Vidiya.Elements" xmlns:sys="clr-namespace:System;assembly=netstandard" 
+             xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="480">
-    <UserControl.Resources>
-        <Color x:Key="TextBoxBackgroundColor">#C4AF8D</Color>
-        <Color x:Key="TextBoxForegroundColor">#6B4E2C</Color>
-        <Color x:Key="ToolBarButtonForegroundColor">#6B4E2C</Color>
-    </UserControl.Resources>
-    
-    
+
     <Grid>
 
         <Grid>
@@ -52,6 +47,31 @@
                        VerticalAlignment="Center" HorizontalAlignment="Center"
                        FontSize="40" Foreground="#8CADB4"
                        >Menus</TextBlock>
+
+            <WrapPanel Grid.Column="1" Grid.Row="1" Margin="0,40">
+                
+                <Button Grid.Column="1" x:Name="AutoplayButton" Style="{StaticResource VidiyaButton}" Click="AutoplayButton_Click" Width="48.6" Height="48.66">
+                    <Grid>
+                        <Ellipse Fill="#002A3D"/>
+                        <materialIcons:MaterialIcon Kind="ClockStarFourPointsOutline" Foreground="#8CADB4" Margin="3"/>
+                    </Grid>
+                </Button>
+
+                <Button Grid.Column="1" x:Name="ContentButton" Style="{StaticResource VidiyaButton}" Click="ContentButton_Click" Width="48.6" Height="48.66">
+                    <Grid>
+                        <Ellipse Fill="#002A3D"/>
+                        <materialIcons:MaterialIcon Kind="Multimedia" Foreground="#8CADB4" Margin="3"/>
+                    </Grid>
+                </Button>
+
+                <Button Grid.Column="1" x:Name="QueueButton" Style="{StaticResource VidiyaButton}" Click="QueueButton_Click" Width="48.6" Height="48.66">
+                    <Grid>
+                        <Ellipse Fill="#002A3D"/>
+                        <materialIcons:MaterialIcon Kind="QueueMusic" Foreground="#8CADB4" Margin="3"/>
+                    </Grid>
+                </Button>
+
+            </WrapPanel>
         </Grid>
     </Grid>
 </UserControl>

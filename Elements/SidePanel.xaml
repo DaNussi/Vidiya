@@ -26,7 +26,9 @@
         <Image Grid.Column="1" Grid.Row="1" Source="{Binding Mode=OneWay, Source={StaticResource SidePanel_Logo}}"/>
 
 
-        <local:MainMenu  Grid.Column="1" Grid.Row="3" />
+        <Grid x:Name="MenuGrid" Grid.Column="1" Grid.Row="3" Loaded="MenuGrid_Loaded">
+            <local:MainMenu />
+        </Grid>
 
 
         <local:MediaControls Grid.Column="1" Grid.Row="5" />

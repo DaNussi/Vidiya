@@ -12,17 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Vidiya.Managers;
 
-namespace Vidiya.Elements
+namespace Vidiya.Elements.Menus
 {
     /// <summary>
-    /// Interaktionslogik für MainMenu.xaml
+    /// Interaktionslogik für QueueMenu.xaml
     /// </summary>
-    public partial class MainMenu : UserControl
+    public partial class QueueMenu : UserControl
     {
-        public MainMenu()
+        public QueueMenu()
         {
             InitializeComponent();
+        }
+
+        private void ReturnButton_Click(object sender, RoutedEventArgs e)
+        {
+            VidiyaManager.instance.MenuManager.returnToPrevious();
         }
     }
 }
