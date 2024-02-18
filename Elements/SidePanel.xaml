@@ -25,26 +25,9 @@
 
         <Image Grid.Column="1" Grid.Row="1" Source="{Binding Mode=OneWay, Source={StaticResource SidePanel_Logo}}"/>
 
-        <Grid Grid.Column="1" Grid.Row="3" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="48.6px"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="48.6px"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="48.6px"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="48.6px"/>
-            </Grid.RowDefinitions>
-            <Border Grid.Column="0" Grid.Row="2" BorderThickness="3" BorderBrush="#8CADB4" CornerRadius="59"/>
-            <Border Grid.Column="2" Grid.Row="2" BorderThickness="3" BorderBrush="#8CADB4" CornerRadius="59"/>
 
-            <Border Grid.Column="1" Grid.Row="0" Grid.RowSpan="4" Margin="-24.3,0" BorderThickness="0,3" BorderBrush="#8CADB4" Background="#002A3D"/>
-            <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,-24.3" BorderThickness="3,0" BorderBrush="#8CADB4" Background="#002A3D"/>
-            <Border Grid.Column="0" Grid.Row="0" BorderThickness="3" BorderBrush="#8CADB4" CornerRadius="59"/>
-            <Border Grid.Column="2" Grid.Row="0" BorderThickness="3" BorderBrush="#8CADB4" CornerRadius="59"/>
-            <Border Grid.Column="1" Grid.Row="0" Margin="-24.3,0" BorderThickness="0,3" BorderBrush="#8CADB4" Background="#002A3D"/>
-        </Grid>
+        <local:MainMenu  Grid.Column="1" Grid.Row="3" />
+
 
         <local:MediaControls Grid.Column="1" Grid.Row="5" />
 
