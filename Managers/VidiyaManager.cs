@@ -10,21 +10,31 @@ namespace Vidiya.Managers
     {
         public static VidiyaManager instance = new VidiyaManager();
 
+        public static LogManager getLogManager() { return instance.LogManager; }
+        public static DataManager getDataManager() { return instance.DataManager; }
+        public static YouTubeDLManager getYouTubeDLManager() { return instance.YouTubeDLManager; }
+        public static MediaManager getMediaManager() { return instance.MediaManager; }
+        public static MenuManager getMenuManager() { return instance.MenuManager; }
+
         private Manager[] mangers = { };
 
         public LogManager LogManager { get; }
         public DataManager DataManager { get; }
+        public YouTubeDLManager YouTubeDLManager { get; }
         public MediaManager MediaManager { get; }
+        public ContentManager ContentManager { get; }
         public MenuManager MenuManager { get; }
 
         public VidiyaManager() : base(new LogManager())
         {
             this.LogManager = this.logger;
             this.DataManager = new DataManager(LogManager);
+            this.YouTubeDLManager = new YouTubeDLManager(LogManager);
             this.MediaManager = new MediaManager(LogManager);
+            this.ContentManager = new ContentManager(LogManager);
             this.MenuManager = new MenuManager(LogManager);
 
-            this.mangers = new Manager[] { LogManager, DataManager , MenuManager };
+            this.mangers = new Manager[] { LogManager, DataManager, YouTubeDLManager, MediaManager , ContentManager, MenuManager };
         }
 
         public override void Init()
