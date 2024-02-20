@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,16 +15,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Vidiya.Content;
+using Vidiya.Managers;
 
 namespace Vidiya.Elements.Content
 {
     /// <summary>
     /// Interaktionslogik für GenericSingleContentSourceDisplay.xaml
     /// </summary>
-    public partial class GenericSingleContentSourceDisplay : UserControl
+    public partial class GenericSingleDisplay : UserControl
     {
+        public LogManager logger = VidiyaManager.instance.LogManager;
 
-        public GenericSingleContentSourceDisplay()
+        public GenericSingleDisplay()
         {
             InitializeComponent();
         }
@@ -31,6 +35,15 @@ namespace Vidiya.Elements.Content
         {
             if (source.content.Count != 1) return;
             ContentElement.SetContent(source.content[0]);
+            StateIcon.Kind = source.stateIcon;
+            StateIcon.ToolTip = source.stateMessage;
+            source.StateChanged += SourceStateChanged;
+        }
+
+        private void SourceStateChanged(object? sender, ContentSource source)
+        {
+            StateIcon.Kind = source.stateIcon;
+            StateIcon.ToolTip = source.stateMessage;
         }
     }
 }

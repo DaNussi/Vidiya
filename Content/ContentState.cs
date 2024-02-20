@@ -8,7 +8,9 @@ namespace Vidiya.Content
 {
     public enum ContentState
     {
+        Unknown,
         Pending,
+        Downloading,
         Ready,
         Error
     }

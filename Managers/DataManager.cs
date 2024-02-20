@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
+using System.Reflection.Metadata;
 using System.Text.Json;
+using Vidiya.Content;
 using static Vidiya.Managers.LogManager;
 
 namespace Vidiya.Managers
@@ -31,17 +34,106 @@ namespace Vidiya.Managers
 
         }
 
-        internal static GlobalState LoadState()
+
+        public string SaveContentSource(ContentSource content)
         {
-            string jsonString = File.ReadAllText(stateDataFile);
-            GlobalState state = JsonSerializer.Deserialize<GlobalState>(jsonString);
+            string folder = GetContentSourcePath(content);
+            if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+            string jsonString = JsonConvert.SerializeObject(content.GetSaveState());
+            File.WriteAllText(Path.Combine(folder, "state.json"), jsonString);
+
+            return folder;
+        }
+
+        public ContentSourceState? LoadContentSource(string contentID)
+        {
+            try
+            {
+                string folder = GetContentSourcePath(contentID);
+                if(folder == null) throw new Exception("Folder was null! " + folder); 
+
+                var settings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    MissingMemberHandling = MissingMemberHandling.Ignore
+                };
+
+                string jsonString = File.ReadAllText(Path.Combine(folder, "state.json"));
+                var state = JsonConvert.DeserializeObject<ContentSourceState>(jsonString, settings);
+                return state;
+            } catch (Exception e)
+            {
+                logger.log(LogType.Error, e.Message);
+                return null;
+            }
+        }
+
+        public string CreateContentSource(string id)
+        {
+            string folder = GetContentSourcePath(id);
+            if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+            return folder;
+        }
+
+        public string CreateContentSource(ContentSource contentSource)
+        {
+            return CreateContentSource(contentSource.id);
+        }
+
+        public string GetContentSourcePath(ContentSource contentSource)
+        {
+            return GetContentSourcePath(contentSource.id);
+        }
+
+        public string GetContentSourcePath(string id)
+        {
+            return Path.Combine(contentDataFolder, id);
+        }
+
+
+
+        public string SaveContent(ContentResource content, ContentSource source)
+        {
+            string folder = GetContentPath(content, source);
+            if(!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+            string jsonString = JsonConvert.SerializeObject(content);
+            File.WriteAllText(Path.Combine(folder, "state.json"), jsonString);
+
+            return folder;
+        }
+
+        public ContentResource? LoadContent(string contentID, string sourceID)
+        {
+            string folder = GetContentPath(contentID, sourceID);
+
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Ignore
+            };
+
+            string jsonString = File.ReadAllText(Path.Combine(folder, "state.json"));
+            ContentResource? state = JsonConvert.DeserializeObject<ContentResource>(jsonString, settings);
             return state;
         }
 
-        internal static void SaveState(GlobalState state)
+        public string CreateContent(string contentID, string sourceID)
         {
-            string jsonString = JsonSerializer.Serialize(state);
-            File.WriteAllText(Path.Combine(appDataFolder, "state.json"), jsonString);
+            string folder = GetContentPath(contentID, sourceID);
+            if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+            return folder;
+        }
+
+        public string GetContentPath(ContentResource content, ContentSource source)
+        {
+            return GetContentPath(content.id, source.id);
+        }
+
+        public string GetContentPath(string contentID, string sourceID)
+        {
+            return Path.Combine(contentDataFolder, sourceID, contentID);
         }
     }
 }

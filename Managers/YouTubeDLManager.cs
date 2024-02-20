@@ -14,6 +14,11 @@ namespace Vidiya.Managers
 
         public YouTubeDLManager(LogManager logger) : base(logger) { }
 
+        public YoutubeDL GetYouTubeDL()
+        {
+            return youtubeDL;
+        }
+
         public override async void Init()
         {
             if (File.Exists(DataManager.ytdlpDataFile))

@@ -33,21 +33,21 @@ namespace Vidiya.Elements.Generics
             YGrid.Visibility = System.Windows.Visibility.Hidden;
             MiniGrid.Visibility = System.Windows.Visibility.Hidden;
 
-            if (MainGrid.ActualWidth > 48.6 && MainGrid.ActualHeight > 48.6)
+            if (MainGrid.ActualWidth <= 48.6 && MainGrid.ActualHeight <= 48.6)
             {
-                FullGrid.Visibility = System.Windows.Visibility.Visible;
+                MiniGrid.Visibility = System.Windows.Visibility.Visible;
             }
-            else if (MainGrid.ActualWidth > 48.6)
+            else if (MainGrid.ActualHeight <= 48.6)
             {
                 XGrid.Visibility = System.Windows.Visibility.Visible;
             }
-            else if (MainGrid.ActualHeight > 48.6)
+            else if (MainGrid.ActualWidth <= 48.6)
             {
                 YGrid.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {
-                MiniGrid.Visibility = System.Windows.Visibility.Visible;
+                FullGrid.Visibility = System.Windows.Visibility.Visible;
             }
         }
     }

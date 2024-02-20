@@ -14,7 +14,7 @@ namespace Vidiya.Managers
         public static DataManager getDataManager() { return instance.DataManager; }
         public static YouTubeDLManager getYouTubeDLManager() { return instance.YouTubeDLManager; }
         public static MediaManager getMediaManager() { return instance.MediaManager; }
-        public static ContentManager GetContentManager() { return instance.ContentManager; }
+        public static ContentManager getContentManager() { return instance.ContentManager; }
         public static MenuManager getMenuManager() { return instance.MenuManager; }
 
         private Manager[] mangers = { };
@@ -32,7 +32,7 @@ namespace Vidiya.Managers
             this.DataManager = new DataManager(LogManager);
             this.YouTubeDLManager = new YouTubeDLManager(LogManager);
             this.MediaManager = new MediaManager(LogManager);
-            this.ContentManager = new ContentManager(LogManager);
+            this.ContentManager = new ContentManager(LogManager, DataManager);
             this.MenuManager = new MenuManager(LogManager);
 
             this.mangers = new Manager[] { LogManager, DataManager, YouTubeDLManager, MediaManager , ContentManager, MenuManager };

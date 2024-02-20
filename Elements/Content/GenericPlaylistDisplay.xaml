@@ -1,35 +1,64 @@
-﻿<UserControl x:Class="Vidiya.Elements.Content.GenericPlaylistContentSourceDisplay"
+﻿<UserControl x:Class="Vidiya.Elements.Content.GenericPlaylistDisplay"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:generics="clr-namespace:Vidiya.Elements.Generics" 
-             xmlns:content="clr-namespace:Vidiya.Elements.Content"
+             xmlns:content="clr-namespace:Vidiya.Elements.Content" xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="902.8" d:DesignWidth="382.8">
+             d:DesignHeight="534" d:DesignWidth="479">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="48.6"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="{Binding ActualHeight, ElementName=ContentGrid, Mode=OneWay}"/>
         </Grid.RowDefinitions>
 
         <generics:VidiyaRect Grid.Row="0" Grid.RowSpan="2"/>
         <generics:VidiyaRect Grid.Row="0" Grid.RowSpan="1"/>
+
+        <materialIcons:MaterialIcon 
+            Grid.Row="0" Width="40" Height="40" HorizontalAlignment="Left" 
+            x:Name="StateIcon" 
+            Kind="HelpCircleOutline" 
+            Foreground="#8CADB4" 
+            Margin="20,0"
+            ToolTipService.InitialShowDelay="0"/>
+
+        <materialIcons:MaterialIcon 
+            Grid.Row="0" Width="40" Height="40" HorizontalAlignment="Right" 
+            x:Name="TypeIcon" 
+            Kind="Youtube" 
+            Foreground="#8CADB4" 
+            Margin="20,0"/>
 
         <TextBlock Grid.Row="0" 
                    VerticalAlignment="Center" HorizontalAlignment="Center"
                    FontSize="30" Foreground="#8CADB4"
                    >YouTube Playlist</TextBlock>
 
-        <StackPanel x:Name="ContentView" Grid.Row="1" Margin="10,0">
-            <StackPanel.Resources>
-                <Style TargetType="{x:Type content:GenericPlaylistContentDisplay}">
-                    <Setter Property="Margin" Value="0,10,0,0"/>
-                </Style>
-            </StackPanel.Resources>
-            <content:GenericPlaylistContentDisplay/>
-            <content:GenericPlaylistContentDisplay/>
-            <content:GenericPlaylistContentDisplay/>
-        </StackPanel>
+        <Grid x:Name="ContentGrid" Grid.Row="1" MinHeight="48.6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="{Binding ActualHeight, ElementName=ContentView, Mode=OneWay}"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+
+            <StackPanel x:Name="ContentView" Grid.Row="1" Grid.Column="1">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type content:GenericContentDisplay}">
+                        <Setter Property="Margin" Value="0,5"/>
+                    </Style>
+                </StackPanel.Resources>
+                <content:GenericContentDisplay/>
+                <content:GenericContentDisplay/>
+                <content:GenericContentDisplay/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

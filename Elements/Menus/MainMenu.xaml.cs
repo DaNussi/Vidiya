@@ -35,7 +35,7 @@ namespace Vidiya.Elements.Menus
 
         private void ContentButton_Click(object sender, RoutedEventArgs e)
         {
-
+            VidiyaManager.instance.MenuManager.changeTo(new ContentMenu());
         }
 
         private void AutoplayButton_Click(object sender, RoutedEventArgs e)

@@ -19,9 +19,9 @@ namespace Vidiya.Elements.Content
     /// <summary>
     /// Interaktionslogik für GenericPlaylistContentDisplay.xaml
     /// </summary>
-    public partial class GenericPlaylistContentDisplay : UserControl
+    public partial class GenericContentDisplay : UserControl
     {
-        public GenericPlaylistContentDisplay()
+        public GenericContentDisplay()
         {
             InitializeComponent();
         }

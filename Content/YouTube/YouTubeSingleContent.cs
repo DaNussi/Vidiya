@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Controls;
 using Vidiya.Elements.Content;
+using Vidiya.Managers;
+using YoutubeDLSharp;
 
 namespace Vidiya.Content.YouTube
 {
@@ -13,18 +16,32 @@ namespace Vidiya.Content.YouTube
             this.url = url;
         }
 
+        public YouTubeSingleContentSource() { }
+
         public override UserControl GetUserControl()
         {
-            var userControl = new GenericSingleContentSourceDisplay();
+            var userControl = new GenericSingleDisplay();
             userControl.SetContent(this);
             return userControl;
         }
 
-        public override ContentState OnSetup()
+        public override async void OnSetup()
         {
-            this.content.Add(new YouTubeSingleContent(new Uri(url),url, url));
+            YoutubeDL youtubeDL = VidiyaManager.instance.YouTubeDLManager.GetYouTubeDL();
+            DataManager dataManager = VidiyaManager.instance.DataManager;
 
-            return ContentState.Error;
+
+            this.SetStateError("Not Implemented!");
+        }
+
+        public override ContentType GetContentType()
+        {
+            return ContentType.YouTubeSingle;
+        }
+
+        public override void OnRebuild()
+        {
+
         }
     }
 
@@ -34,7 +51,7 @@ namespace Vidiya.Content.YouTube
 
         public override UserControl GetUserControl()
         {
-            var userControl = new GenericPlaylistContentDisplay();
+            var userControl = new GenericContentDisplay();
             userControl.SetContent(this);
             return userControl;
         }
