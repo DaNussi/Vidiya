@@ -12,27 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Vidiya.Content;
 
-namespace Vidiya.Elements.MediaControls
+namespace Vidiya.Elements.Content
 {
     /// <summary>
-    /// Interaktionslogik für MediaControls.xaml
+    /// Interaktionslogik für GenericPlaylistContentSourceDisplay.xaml
     /// </summary>
-    public partial class PrimaryMediaControls : UserControl
+    public partial class GenericPlaylistContentSourceDisplay : UserControl
     {
-        public PrimaryMediaControls()
+        public GenericPlaylistContentSourceDisplay()
         {
             InitializeComponent();
         }
 
-        private void NextButton_Click(object sender, RoutedEventArgs e)
+        public void SetContent(ContentSource source)
         {
-
-        }
-
-        private void PlayPauseButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            ContentView.Children.Clear();
+            foreach(var content in source.content)
+            {
+                ContentView.Children.Add(content.GetUserControl());
+            }
         }
     }
 }

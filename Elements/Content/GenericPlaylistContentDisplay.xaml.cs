@@ -12,17 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Vidiya.Content;
 
-namespace Vidiya.Elements.Content.YouTube
+namespace Vidiya.Elements.Content
 {
     /// <summary>
-    /// Interaktionslogik für YouTubePlaylistContentSourceDisplay.xaml
+    /// Interaktionslogik für GenericPlaylistContentDisplay.xaml
     /// </summary>
-    public partial class YouTubePlaylistContentSourceDisplay : UserControl
+    public partial class GenericPlaylistContentDisplay : UserControl
     {
-        public YouTubePlaylistContentSourceDisplay()
+        public GenericPlaylistContentDisplay()
         {
             InitializeComponent();
+        }
+
+        public void SetContent(ContentResource content)
+        {
+            TitleText.Text = content.title;
+            DescriptionText.Text = content.description;
         }
     }
 }

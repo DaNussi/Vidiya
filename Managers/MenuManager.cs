@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using Vidiya.Elements;
+using Vidiya.Elements.Menus;
 
 namespace Vidiya.Managers
 {

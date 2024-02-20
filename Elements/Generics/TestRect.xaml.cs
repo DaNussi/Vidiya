@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Vidiya.Elements.Content.YouTube
+namespace Vidiya.Elements.Generics
 {
     /// <summary>
-    /// Interaktionslogik für YouTubePlaylistContentDisplay.xaml
+    /// Interaktionslogik für TestRect.xaml
     /// </summary>
-    public partial class YouTubePlaylistContentDisplay : UserControl
+    public partial class TestRect : UserControl
     {
-        public YouTubePlaylistContentDisplay()
+        public TestRect()
         {
             InitializeComponent();
         }

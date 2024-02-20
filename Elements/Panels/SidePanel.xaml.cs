@@ -1,9 +1,7 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using Vidiya.Managers;
 
-namespace Vidiya.Elements
+namespace Vidiya.Elements.Panels
 {
     /// <summary>
     /// Interaktionslogik für SidePanel.xaml

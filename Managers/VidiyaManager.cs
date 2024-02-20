@@ -14,6 +14,7 @@ namespace Vidiya.Managers
         public static DataManager getDataManager() { return instance.DataManager; }
         public static YouTubeDLManager getYouTubeDLManager() { return instance.YouTubeDLManager; }
         public static MediaManager getMediaManager() { return instance.MediaManager; }
+        public static ContentManager GetContentManager() { return instance.ContentManager; }
         public static MenuManager getMenuManager() { return instance.MenuManager; }
 
         private Manager[] mangers = { };

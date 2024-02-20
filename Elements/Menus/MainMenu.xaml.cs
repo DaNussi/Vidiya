@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using Vidiya.Elements.Menus;
 using Vidiya.Managers;
 
-namespace Vidiya.Elements
+namespace Vidiya.Elements.Menus
 {
     /// <summary>
     /// Interaktionslogik für MainMenu.xaml

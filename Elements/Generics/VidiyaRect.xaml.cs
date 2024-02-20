@@ -1,4 +1,17 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace Vidiya.Elements.Generics
 {
@@ -12,6 +25,7 @@ namespace Vidiya.Elements.Generics
             InitializeComponent();
         }
 
+
         private void MainGrid_SizeChanged(object sender, System.Windows.SizeChangedEventArgs e)
         {
             FullGrid.Visibility = System.Windows.Visibility.Hidden;
@@ -22,13 +36,16 @@ namespace Vidiya.Elements.Generics
             if (MainGrid.ActualWidth > 48.6 && MainGrid.ActualHeight > 48.6)
             {
                 FullGrid.Visibility = System.Windows.Visibility.Visible;
-            } else if(MainGrid.ActualWidth > 48.6)
+            }
+            else if (MainGrid.ActualWidth > 48.6)
             {
                 XGrid.Visibility = System.Windows.Visibility.Visible;
-            } else if(MainGrid.ActualHeight > 48.6)
+            }
+            else if (MainGrid.ActualHeight > 48.6)
             {
                 YGrid.Visibility = System.Windows.Visibility.Visible;
-            } else
+            }
+            else
             {
                 MiniGrid.Visibility = System.Windows.Visibility.Visible;
             }

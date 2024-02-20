@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="Vidiya.Elements.BigPanel"
+﻿<UserControl x:Class="Vidiya.Elements.Panels.BigPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Vidiya.Elements"
+             xmlns:mediacontrols="clr-namespace:Vidiya.Elements.MediaControl"
              mc:Ignorable="d" 
              d:DesignHeight="1080" 
              d:DesignWidth="1470"
@@ -26,7 +26,7 @@
                      Grid.Row="0" Grid.RowSpan="3">
                 <MediaElement Name="Media" Loaded="Media_Loaded"/>
             </Viewbox>
-            <local:SecondaryMediaControl Grid.Column="1" Grid.Row="1"/>
+            <mediacontrols:SecondaryMediaControl Grid.Column="1" Grid.Row="1"/>
         </Grid>
 
     </Grid>

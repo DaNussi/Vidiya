@@ -12,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Vidiya.Content.YouTube;
 
-namespace Vidiya.Elements.Content.YouTube
+namespace Vidiya.Elements.Generics
 {
     /// <summary>
-    /// Interaktionslogik für YouTubeSingleContentDisplay.xaml
+    /// Interaktionslogik für Test.xaml
     /// </summary>
-    public partial class YouTubeSingleContentDisplay : UserControl
+    public partial class Test : UserControl
     {
-
-        public YouTubeSingleContentDisplay(YouTubeSingleContent content)
+        public Test()
         {
             InitializeComponent();
-
-            this.TitleTextBlock.Text = content.title;
-            this.DiscriptionTextBlock.Text = content.description;
-            this.URITextBlock.Text = content.uri.ToString();
         }
     }
 }

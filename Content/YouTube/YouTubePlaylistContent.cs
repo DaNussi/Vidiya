@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Windows.Controls;
 using Vidiya.Elements.Content;
-using Vidiya.Elements.Content.YouTube;
 
 namespace Vidiya.Content.YouTube
 {
 
-    public class YouTubePlaylistContentSource<YouTubePlaylistContent> : ContentSource
+    public class YouTubePlaylistContentSource : ContentSource
     {
+        public string url { get; }
+
+        public YouTubePlaylistContentSource(string url) {
+            this.url = url;
+        }
+
         public override UserControl GetUserControl()
         {
-            return new YouTubePlaylistContentSourceDisplay();
+            var userControl = new GenericPlaylistContentSourceDisplay();
+            userControl.SetContent(this);
+            return userControl;
         }
 
         public override ContentState OnSetup()
@@ -25,7 +32,9 @@ namespace Vidiya.Content.YouTube
 
         public override UserControl GetUserControl()
         {
-            return new YouTubePlaylistContentDisplay();
+            var userControl = new GenericPlaylistContentDisplay();
+            userControl.SetContent(this);
+            return userControl;
         }
     }
 }

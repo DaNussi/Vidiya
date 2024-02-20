@@ -1,9 +1,11 @@
-﻿<UserControl x:Class="Vidiya.Elements.SidePanel"
+﻿<UserControl x:Class="Vidiya.Elements.Panels.SidePanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Vidiya.Elements"
+             xmlns:local="clr-namespace:Vidiya.Elements" 
+             xmlns:mediacontrols="clr-namespace:Vidiya.Elements.MediaControls" 
+             xmlns:menus="clr-namespace:Vidiya.Elements.Menus"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="480"
              Background="#002A3D">
@@ -27,11 +29,11 @@
 
 
         <Grid x:Name="MenuGrid" Grid.Column="1" Grid.Row="3" Loaded="MenuGrid_Loaded">
-            <local:MainMenu />
+            <menus:MainMenu />
         </Grid>
 
 
-        <local:MediaControls Grid.Column="1" Grid.Row="5" />
+        <mediacontrols:PrimaryMediaControls Grid.Column="1" Grid.Row="5" />
 
     </Grid>
 </UserControl>

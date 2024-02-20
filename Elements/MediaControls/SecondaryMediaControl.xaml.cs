@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using Vidiya.Managers;
 using Vidiya.Windows;
 
-namespace Vidiya.Elements
+namespace Vidiya.Elements.MediaControl
 {
     /// <summary>
     /// Interaktionslogik für SecondaryMediaControl.xaml

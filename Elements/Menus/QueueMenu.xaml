@@ -1,17 +1,20 @@
-﻿<UserControl xmlns:YouTube="clr-namespace:Vidiya.Elements.Content.YouTube"  x:Class="Vidiya.Elements.Menus.QueueMenu"
+﻿<UserControl x:Class="Vidiya.Elements.Menus.QueueMenu"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Vidiya.Elements.Menus" xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF" xmlns:Generics="clr-namespace:Vidiya.Elements.Generics"
+             xmlns:local="clr-namespace:Vidiya.Elements.Menus" 
+             xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF" 
+             xmlns:generics="clr-namespace:Vidiya.Elements.Generics" 
+             xmlns:content="clr-namespace:Vidiya.Elements.Content"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="480">
 
 
     <Grid>
 
-        <Generics:VidiyaRect/>
-        <Generics:VidiyaRect Height="48.6" VerticalAlignment="Top"/>
+        <generics:VidiyaRect/>
+        <generics:VidiyaRect Height="48.6" VerticalAlignment="Top"/>
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -42,7 +45,7 @@
                             Width="{Binding ActualWidth, ElementName=ContentScroll, Mode=OneWay}"
                             Height="{Binding ActualHeight, ElementName=ContentScroll, Mode=OneWay}" 
                             SizeChanged="ContentView_SizeChanged">
-                    
+                    <content:GenericPlaylistContentSourceDisplay />
                 </StackPanel>
             </ScrollViewer>
         </Grid>
