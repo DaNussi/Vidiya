@@ -45,13 +45,13 @@
 
             <ScrollViewer Grid.Row="0" Grid.Column="2"
                       ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                      ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                 <TextBlock x:Name="TitleText" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0">This is a Title</TextBlock>
             </ScrollViewer>
 
             <ScrollViewer Grid.Row="1" Grid.Column="2" 
                       ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                      ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                 <TextBlock x:Name="DescriptionText" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0">A  description!</TextBlock>
             </ScrollViewer>
 

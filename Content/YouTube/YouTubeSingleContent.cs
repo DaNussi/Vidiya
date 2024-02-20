@@ -15,7 +15,7 @@ namespace Vidiya.Content.YouTube
 
         public override UserControl GetUserControl()
         {
-            var userControl = new GenericPlaylistContentSourceDisplay();
+            var userControl = new GenericSingleContentSourceDisplay();
             userControl.SetContent(this);
             return userControl;
         }

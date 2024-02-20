@@ -15,7 +15,18 @@
 
         <generics:VidiyaRect Grid.Row="0" Grid.RowSpan="2"/>
         <generics:VidiyaRect Grid.Row="0" Grid.RowSpan="1"/>
-        <StackPanel x:Name="ContentView" Grid.Row="1">
+
+        <TextBlock Grid.Row="0" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   FontSize="30" Foreground="#8CADB4"
+                   >YouTube Playlist</TextBlock>
+
+        <StackPanel x:Name="ContentView" Grid.Row="1" Margin="10,0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type content:GenericPlaylistContentDisplay}">
+                    <Setter Property="Margin" Value="0,10,0,0"/>
+                </Style>
+            </StackPanel.Resources>
             <content:GenericPlaylistContentDisplay/>
             <content:GenericPlaylistContentDisplay/>
             <content:GenericPlaylistContentDisplay/>

@@ -22,6 +22,8 @@ namespace Vidiya.Content.YouTube
 
         public override ContentState OnSetup()
         {
+            this.content.Add(new YouTubePlaylistContent(new Uri(url), url, url));
+
             return ContentState.Error;
         }
     }

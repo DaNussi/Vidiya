@@ -17,6 +17,7 @@ namespace Vidiya.Managers
 
         public override void Init()
         {
+            contentSources.Add(new YouTubeSingleContentSource("https://www.youtube.com/watch?v=_NvVaUTBAVE"));
             contentSources.Add(new YouTubePlaylistContentSource("https://www.youtube.com/watch?v=_NvVaUTBAVE"));
             contentSources.ForEach(e => e.OnSetup());
 

@@ -17,22 +17,20 @@ using Vidiya.Content;
 namespace Vidiya.Elements.Content
 {
     /// <summary>
-    /// Interaktionslogik für GenericPlaylistContentSourceDisplay.xaml
+    /// Interaktionslogik für GenericSingleContentSourceDisplay.xaml
     /// </summary>
-    public partial class GenericPlaylistContentSourceDisplay : UserControl
+    public partial class GenericSingleContentSourceDisplay : UserControl
     {
-        public GenericPlaylistContentSourceDisplay()
+
+        public GenericSingleContentSourceDisplay()
         {
             InitializeComponent();
         }
 
         public void SetContent(ContentSource source)
         {
-            ContentView.Children.Clear();
-            foreach(var content in source.content)
-            {
-                ContentView.Children.Add(content.GetUserControl());
-            }
+            if (source.content.Count != 1) return;
+            ContentElement.SetContent(source.content[0]);
         }
     }
 }

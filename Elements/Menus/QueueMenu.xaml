@@ -18,34 +18,32 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="48.6px"/>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="48.6px"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="48.6px"/>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="48.6px"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Column="1" Grid.Row="0" 
+            <TextBlock Grid.Row="0" 
                        VerticalAlignment="Center" HorizontalAlignment="Center"
                        FontSize="40" Foreground="#8CADB4"
                        >Queue</TextBlock>
 
-            <Button Grid.Column="0" Grid.Row="0" x:Name="ReturnButton" Style="{StaticResource VidiyaButton}" Click="ReturnButton_Click" Width="40" Height="40">
+            <Button Margin="8.6,4.3" Grid.Row="0" HorizontalAlignment="Left" x:Name="ReturnButton" Style="{StaticResource VidiyaButton}" Click="ReturnButton_Click" Width="40" Height="40">
                 <Grid>
                     <Ellipse Fill="#002A3D"/>
                     <materialIcons:MaterialIcon Kind="KeyboardReturn" Foreground="#8CADB4" Margin="3"/>
                 </Grid>
             </Button>
 
-            <ScrollViewer x:Name="ContentScroll" Grid.Column="1" Grid.Row="1" Margin="0,40" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer x:Name="ContentScroll" Grid.Column="1" Grid.Row="1" Margin="10" VerticalScrollBarVisibility="Auto">
                 <StackPanel x:Name="ContentView"
                             Width="{Binding ActualWidth, ElementName=ContentScroll, Mode=OneWay}"
                             Height="{Binding ActualHeight, ElementName=ContentScroll, Mode=OneWay}" 
                             SizeChanged="ContentView_SizeChanged">
                     <content:GenericPlaylistContentSourceDisplay />
+                    <content:GenericSingleContentSourceDisplay />
                 </StackPanel>
             </ScrollViewer>
         </Grid>
